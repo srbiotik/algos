@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "algos"
+version = "0.1.0"
+description = ""
+authors = ["milos grujic <srbiotik@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
