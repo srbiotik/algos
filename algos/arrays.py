@@ -55,26 +55,24 @@ def spiralTraverse(array):
 
 
 def longestPeak(array):
-    # Write your code here.
     if len(array) < 3: return 0
     longest_peak = 0
-    current_peak = 0
-    for i in range(len(array) - 1):
-        current_peak += 1
-        if array[i] <= array[i + 1]:
+    i = 1
+    while i < len(array) - 1:
+        if array[i - 1] < array[i] > array[i + 1]:
+            peak = i
+            l = peak - 1
+            r = peak + 1
+            current_peak_length = 1
+            while l >= 0 and array[l] < array[l + 1]:
+                current_peak_length += 1
+                l -= 1
+            while r <= len(array) - 1 and array[r] < array[r - 1]:
+                current_peak_length += 1
+                r += 1
+            if current_peak_length > longest_peak:
+                longest_peak = current_peak_length
+            i = r
             continue
-        else:
-            current_peak += 1
-            if current_peak > longest_peak and current_peak >= 3:
-                longest_peak = current_peak
-            current_peak = 0
 
-    return longest_peak
-
-
-
-data = {
-  "array": [5, 4, 3, 2, 1, 2, 1]
-}
-
-print(longestPeak(data['array']))
+        i += 1
